@@ -1,0 +1,574 @@
+snippet php
+	<?php
+	${1}
+	?>
+snippet ec
+	echo "${1:string}"${2};
+snippet inc
+	include '${1:file}';${2}
+snippet inc1
+	include_once '${1:file}';${2}
+snippet req
+	require '${1:file}';${2}
+snippet req1
+	require_once '${1:file}';${2}
+# $GLOBALS['...']
+snippet globals
+	$GLOBALS['${1:variable}']${2: = }${3:something}${4:;}${5}
+snippet $_ COOKIE['...']
+	$_COOKIE['${1:variable}']${2}
+snippet $_ ENV['...']
+	$_ENV['${1:variable}']${2}
+snippet $_ FILES['...']
+	$_FILES['${1:variable}']${2}
+snippet $_ Get['...']
+	$_GET['${1:variable}']${2}
+snippet $_ POST['...']
+	$_POST['${1:variable}']${2}
+snippet $_ REQUEST['...']
+	$_REQUEST['${1:variable}']${2}
+snippet $_ SERVER['...']
+	$_SERVER['${1:variable}']${2}
+snippet $_ SESSION['...']
+	$_SESSION['${1:variable}']${2}
+# Start Docblock
+snippet /*
+	/**
+	 * ${1}
+	 **/
+# Class - post doc
+snippet doc_cp
+	/**
+	 * ${1:undocumented class}
+	 *
+	 * @package ${2:default}
+	 * @author ${3:`g:snips_author`}
+	**/${4}
+# Class Variable - post doc
+snippet doc_vp
+	/**
+	 * ${1:undocumented class variable}
+	 *
+	 * @var ${2:string}
+	 **/${3}
+# Class Variable
+snippet doc_v
+	/**
+	 * ${3:undocumented class variable}
+	 *
+	 * @var ${4:string}
+	 **/
+	${1:var} $${2};${5}
+# Class
+snippet doc_c
+	/**
+	 * ${3:undocumented class}
+	 *
+	 * @packaged ${4:default}
+	 * @author ${5:`g:snips_author`}
+	 **/
+	${1:}class ${2:}
+	{${6}
+	} // END $1class $2
+# Constant Definition - post doc
+snippet doc_dp
+	/**
+	 * ${1:undocumented constant}
+	 **/${2}
+# Constant Definition
+snippet doc_d
+	/**
+	 * ${3:undocumented constant}
+	 **/
+	define(${1}, ${2});${4}
+# Function - post doc
+snippet doc_fp
+	/**
+	 * ${1:undocumented function}
+	 *
+	 * @return ${2:void}
+	 * @author ${3:`g:snips_author`}
+	 **/${4}
+# Function signature
+snippet doc_s
+	/**
+	 * ${4:undocumented function}
+	 *
+	 * @return ${5:void}
+	 * @author ${6:`g:snips_author`}
+	 **/
+	${1}function ${2}(${3});${7}
+# Function
+snippet doc_f
+	/**
+	 * ${4:undocumented function}
+	 *
+	 * @return ${5:void}
+	 * @author ${6:`g:snips_author`}
+	 **/
+	${1}function ${2}(${3})
+	{${7}
+	}
+# Header
+snippet doc_h
+	/**
+	 * ${1}
+	 *
+	 * @author ${2:`g:snips_author`}
+	 * @version ${3:$Id$}
+	 * @copyright ${4:$2}, `strftime('%d %B, %Y')`
+	 * @package ${5:default}
+	 **/
+	
+	/**
+	 * Define DocBlock
+	 *//
+# Interface
+snippet doc_i
+	/**
+	 * ${2:undocumented class}
+	 *
+	 * @package ${3:default}
+	 * @author ${4:`g:snips_author`}
+	 **/
+	interface ${1:}
+	{${5}
+	} // END interface $1
+# class ...
+snippet class
+	/**
+	 * ${1}
+	 **/
+	class ${2:ClassName}
+	{
+		${3}
+		function ${4:__construct}(${5:argument})
+		{
+			${6:// code...}
+		}
+	}
+# define(...)
+snippet def
+	define('${1}'${2});${3}
+# defined(...)
+snippet def?
+	${1}defined('${2}')${3}
+snippet wh
+	while (${1:/* condition */}) {
+		${2:// code...}
+	}
+# do ... while
+snippet do
+	do {
+		${2:// code... }
+	} while (${1:/* condition */});
+snippet if
+	if (${1:/* condition */}) {
+		${2:// code...}
+	}
+snippet ife
+	if (${1:/* condition */}) {
+		${2:// code...}
+	} else {
+		${3:// code...}
+	}
+	${4}
+snippet else
+	else {
+		${1:// code...}
+	}
+snippet elseif
+	elseif (${1:/* condition */}) {
+		${2:// code...}
+	}
+# Tertiary conditional
+snippet t
+	$${1:retVal} = (${2:condition}) ? ${3:a} : ${4:b};${5}
+snippet switch
+	switch ($${1:variable}) {
+		case '${2:value}':
+			${3:// code...}
+			break;
+		${5}
+		default:
+			${4:// code...}
+			break;
+	}
+snippet case
+	case '${1:value}':
+		${2:// code...}
+		break;${3}
+snippet for
+	for ($${2:i} = 0; $$2 < ${1:count}; $$2${3:++}) {
+		${4: // code...}
+	}
+snippet foreach
+	foreach ($${1:variable} as $${2:key}) {
+		${3:// code...}
+	}
+snippet fun
+	${1:public }function ${2:FunctionName}(${3})
+	{
+		${4:// code...}
+	}
+# $... = array (...)
+snippet array
+	$${1:arrayName} = array('${2}' => ${3});${4}
+
+# Moodle snippets
+# =====================
+snippet doc_m
+	// This file is part of Moodle - http://moodle.org/
+	//
+	// Moodle is free software: you can redistribute it and/or modify
+	// it under the terms of the GNU General Public License as published by
+	// the Free Software Foundation, either version 3 of the License, or
+	// (at your option) any later version.
+	//
+	// Moodle is distributed in the hope that it will be useful,
+	// but WITHOUT ANY WARRANTY; without even the implied warranty of
+	// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	// GNU General Public License for more details.
+	//
+	// You should have received a copy of the GNU General Public License
+	// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+	/**
+	 * Admin settings search form
+	 *
+	 * @package    admin
+	 * @copyright  2016 Damyon Wiese
+	 * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+	 */
+snippet doc_fr
+	required
+	maxlength
+	minlength
+	rangelength
+	email
+	regex
+	lettersonly
+	alphanumeric
+	numeric
+	nopunctuation
+	nonzero
+	callback
+	compare
+
+snippet url
+	new moodle_url($CFG->wwwroot);
+
+snippet op
+	$param = optional_param('param', '', PARAM_);
+
+snippet rp
+	$param = required_param('param', PARAM_);
+
+snippet rl
+	require_login(0, false); // No guest access
+snippet gs
+	get_string('', '');
+snippet gss
+	get_strings(array(''), '');
+
+snippet pst
+	include '../../config.php';
+	$PAGE->set_context(context_system::instance());
+	$PAGE->set_url('/', $params);
+	$PAGE->set_pagelayout('admin');
+	$PAGE->set_title(get_string('title', 'com_plugin'));
+	$PAGE->set_heading(get_string('heading', 'com_plugin'));
+	$PAGE->navbar->add(get_string('nav', 'com_plugin'));
+	$OUPUT->header();
+	// Your content
+	$OUTPUT->footer();
+
+# Form API
+
+snippet fst
+
+	defined('MOODLE_INTERNAL') || die();
+	require_once($CFG->libdir . '/formslib.php');
+
+	class com_plgin_form extends moodleform {
+
+		public function definition() {
+			global $DB;
+			$mform = $this->_form;
+			$id = $this->_customdata['id'];
+
+			$mform->addElement('hidden', 'id', $id);
+			$mform->setType('id', PARAM_INT);
+			$this->add_action_buttons();
+		}
+
+		public function	validation($data, $files) {
+			global $DB;
+			$errors = array();
+			return $errors;
+		}
+	}
+
+snippet dr
+	$row = $DB->get_record('', array('id' => $id), '*', MUST_EXIST);
+
+snippet dq
+	$row = $DB->get_record_sql('', array('id' => $id), '*', MUST_EXIST);
+
+snippet drs
+	$DB->get_records('', array(), '', '*');
+
+snippet drm
+	$DB->get_records_menu('', array(), '', '*');
+
+snippet df
+	$DB->get_field('', '', array());
+
+snippet dd
+	$DB->delete_records('', array());
+
+snippet di
+	$DB->insert_record('', $insert);
+
+snippet dtr
+	global $DB;
+	try {
+		$transaction = $DB->start_delegated_transaction();
+		// Insert a record
+		$DB->insert_record('foo', $object);
+		$DB->insert_record('bar', $otherobject);
+		// Assuming the both inserts work, we get to the following line.
+		$transaction->allow_commit();
+	} catch(exception $e) {
+		$transaction->rollback($e);
+	}
+
+snippet die
+	list($in, $params) = $DB->get_in_or_equal($SESSION->bulk_users);
+	$rs = $DB->get_recordset_select('user',"id $in", $params, '', 'id, name');
+
+
+# Forn API
+
+snippet ft
+	$mform->addElement('text', 'name', get_string('forumname', 'forum'), $attributes);
+
+snippet fbtn
+	$mform->addElement('button', 'intro', get_string("buttonlabel"));
+
+snippet fds
+	$mform->addElement('date_selector', 'assesstimefinish', get_string('to'));
+
+snippet fdts
+	$mform->addElement('date_time_selector', 'assesstimestart', get_string('from'));
+
+snippet fd
+	$mform->addElement('duration', 'timelimit', get_string('timelimit', 'quiz'));
+
+snippet fed
+	$mform->addElement('editor', 'fieldname', get_string('labeltext', 'langfile'));
+	$mform->setType('fieldname', PARAM_RAW);
+snippet ff
+	$mform->addElement('file', 'attachment', get_string('attachment', 'forum'));
+
+snippet ffp
+	$mform->addElement('filepicker', 'userfile', get_string('file'), null, array('maxbytes' => $maxbytes, 'accepted_types' => '*'));
+
+snippet fh
+	$mform->addElement('hidden', 'reply', 'yes');
+
+snippet fht
+	$mform->addElement('html', '<div class="qheader">');
+
+snippet	fr
+	$radioarray=array();
+	$radioarray[] = $mform->createElement('radio', 'yesno', '', get_string('yes'), 1, $attributes);
+	$radioarray[] = $mform->createElement('radio', 'yesno', '', get_string('no'), 0, $attributes);
+	$mform->addGroup($radioarray, 'radioar', '', array(' '), false);
+
+snippet fs
+	$mform->addElement('select', 'type', get_string('forumtype', 'forum'), $FORUM_TYPES, $attributes);
+
+snippet fms
+	$select = $mform->addElement('select', 'colors', get_string('colors'), array('red', 'blue', 'green'), $attributes);
+	$select->setMultiple(true);
+	$select->setSelected('0000ff');
+
+snippet fyn
+	$mform->addElement('selectyesno', 'maxbytes', get_string('maxattachmentsize', 'forum'));
+
+snippet ftext
+	$mform->addElement('textarea', 'introduction', get_string("introtext", "survey"), 'wrap="virtual" rows="20" cols="50"');
+
+snippet ftag
+	$mform->addElement('tags', 'field_name', $lable, $options, $attributes);
+
+snippet fc
+	$mform->addElement('checkbox', 'ratingtime', get_string('ratingtime', 'forum'));
+
+snippet fac
+	$mform->addElement('advcheckbox', 'ratingtime', get_string('ratingtime', 'forum'), 'Label displayed after checkbox', array('group' => 1), array(0, 1));
+
+snippet fr
+	$mform->addRule('elementname', get_string('error'), 'rule type', 'extraruledata', 'server'(default), false, false);
+
+snippet fim
+	$mform = new simplehtml_form();
+	if ($mform->is_cancelled()) {
+	     //Handle form cancel operation, if cancel button is present on form
+	} else if ($fromform = $mform->get_data()) {
+	   //In this case you process validated data. $mform->get_data() returns data posted in form.
+	} else {
+		$mform->set_data($toform);
+		 //displays the form
+		 $mform->display();
+	}
+
+# Context API
+snippet cs
+	$systemcontext = context_system::instance();
+
+snippet cu
+	$usercontext = context_user::instance($user->id);
+
+snippet ccc
+	$categorycontext = context_coursecat::instance($category->id);
+
+snippet cc
+	$coursecontext = context_course::instance($course->id);
+
+snippet cm
+	$contextmodule = context_module::instance($cm->id);
+
+snippet hc
+	has_capability('', $context);
+
+snippet rc
+	require_capability('', $context);
+
+snippet isa
+	is_siteadmin()
+
+snippet isl
+	isloggedin()
+# Enrolment
+snippet ise
+	function is_enrolled($context, $user);
+
+# Webservice template
+
+snippet wst
+	require_once($CFG->libdir . "/externallib.php");
+	class local_wstemplate_external extends external_api {
+
+		/**
+	 	 * Returns description of method parameters
+	     * @return external_function_parameters
+	 	 */
+		public static function hello_world_parameters() {
+			return new external_function_parameters(
+				array('welcomemessage' => new external_value(PARAM_TEXT, 'The welcome message. By default it is
+						"Hello world,"', VALUE_DEFAULT, 'Hello world, '))
+				);
+		}
+
+		/**
+	     * Returns welcome message
+	     * @return string welcome message
+		 */
+		public static function hello_world($welcomemessage = 'Hello world, ') {
+			global $USER;
+			//Parameter validation
+			//REQUIRED
+			$params = self::validate_parameters(self::hello_world_parameters(), array('welcomemessage' => $welcomemessage));
+			//Context validation
+			//OPTIONAL but in most web service
+			//it should present
+			$context = get_context_instance(CONTEXT_USER, $USER->id);
+			self::validate_context($context);
+			if (!has_capability('moodle/user:viewdetails', $context)) {
+				throw new moodle_exception('cannotviewprofile');
+			}
+			return $params['welcomemessage'] . $USER->firstname;
+		}
+
+		/**
+		 * Returns description of method result value
+		 * @return
+		 * external_description
+		 */
+		public static function hello_world_returns() {
+			return new external_value(PARAM_TEXT, 'The welcome message user first name');
+		}
+	}
+snippet wcfg
+	// We defined the web service functions to install.
+	$functions = array(
+		'local_wstemplate_hello_world' => array(
+			'classname'   => 'local_wstemplate_external',
+			'methodname'  => 'hello_world',
+			'classpath'   => 'local/wstemplate/externallib.php',
+			'description' => 'Return Hello World FIRSTNAME. Can change the text (Hello World)
+			sending a new text as parameter',
+			'type'        => 'read',
+			)
+		);
+	// We define the services to install as pre-build services. A pre-build service is not editable by administrator.
+	$services = array(
+		'My service' => array(
+			'functions' => array ('local_wstemplate_hello_world'),
+			'restrictedusers' => 0,
+			'enabled'=>1,
+			)
+		);
+snippet l
+	$string[''] = '';
+
+# Output api
+snippet ht
+	html_writer::tag('', 'conten', array('class' => ''));
+
+snippet hst
+	html_writer::start_tag('', array('class' => ''));
+
+snippet het
+	html_writer::start_tag('');
+
+snippet hemt
+	html_writer::empty_tag('', array('param' => '')));
+
+snippet himg
+	html_writer::img('url', '', array('class' => ''));
+
+snippet hli
+	html_writer::link($hub['url'], $hubname);
+
+snippet hs
+	html_writer::select($options, $elementname, $select, false, array('id' => $elementname));
+snippet hal
+	html_writer::alist($entrieslist, array('class'=>'list'));
+
+snippet hjs
+	html_writer::script($jsscript);
+
+snippet htb
+	html_writer::table($table);
+
+snippet hsp
+	html_writer::span($content, 'item-content-wrap');
+
+snippet hssp
+	 html_writer::start_span('class', array('id' => ''));
+snippet hsep
+	html_writer::end_span();
+# Output component
+snippet oconfirm
+	$confirmurl = new moodle_url($deletepage->url, array('sesskey' => sesskey(), 'bui_deleteid' => $block->instance->id, 'bui_confirm' => 1));
+	$cancelurl = new moodle_url($deletepage->url);
+	$yesbutton = new single_button($confirmurl, get_string('yes'));
+	$nobutton = new single_button($cancelurl, get_string('no'));
+	echo $OUTPUT->confirm($message, $yesbutton, $nobutton);
+snippet oselect
+	$select = new single_select($url, 'id', $courselist, $course->id, null, 'courseform');
+snippet obox
+	 echo $OUTPUT->box($msg, 'generalbox');
